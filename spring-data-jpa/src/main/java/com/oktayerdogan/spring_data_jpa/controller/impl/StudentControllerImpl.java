@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oktayerdogan.spring_data_jpa.controller.IStudentController;
+import com.oktayerdogan.spring_data_jpa.dto.DtoStudent;
+import com.oktayerdogan.spring_data_jpa.dto.DtoStudentIU;
 import com.oktayerdogan.spring_data_jpa.entites.Student;
 import com.oktayerdogan.spring_data_jpa.services.IStudentServices;
 
@@ -25,19 +27,19 @@ public class StudentControllerImpl implements IStudentController {
 
     @PostMapping(path = "/save")
     @Override
-    public Student saveStudent(@RequestBody Student student) {
-       return studentService.saveStudent(student);
+    public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIU) {
+       return studentService.saveStudent(dtoStudentIU);
     }
     
     @GetMapping(path = "/list")
     @Override
-    public List<Student> getAllStudents(){
+    public List<DtoStudent> getAllStudents(){
         return studentService.getAllStudents();
     }
 
     @Override
     @GetMapping(path = "/list/{id}")
-    public Student getStudentById(@PathVariable(name = "id") Integer id) {
+    public DtoStudent getStudentById(@PathVariable(name = "id") Integer id) {
        return studentService.getStudentById(id);
     }
 
@@ -49,7 +51,7 @@ public class StudentControllerImpl implements IStudentController {
 
     @Override
     @PutMapping(path =  "/update/{id}")
-    public Student updateStudent(@PathVariable(name = "id") Integer id,@RequestBody Student updateStudent) {
-        return studentService.updateStudent(id, updateStudent);
+    public DtoStudent updateStudent(@PathVariable(name = "id") Integer id,@RequestBody DtoStudentIU dtoStudentIU) {
+        return studentService.updateStudent(id, dtoStudentIU);
     }
 }
