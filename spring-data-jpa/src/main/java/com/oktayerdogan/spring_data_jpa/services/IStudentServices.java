@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudent;
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudentIU;
-import com.oktayerdogan.spring_data_jpa.entites.Student;
 
 public interface IStudentServices {
 

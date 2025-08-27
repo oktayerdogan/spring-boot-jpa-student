@@ -1,7 +1,7 @@
 # Spring Boot JPA Student API
 
 Bu proje, **Spring Boot** ve **Spring Data JPA** kullanılarak geliştirilmiş basit bir `Student` kayıt ve yönetim uygulamasıdır.  
-**Lombok** ile boilerplate kodları azaltılmıştır ve **Maven** ile yönetilmektedir.
+**Lombok** ile boilerplate kodları azaltılmıştır ve **Maven** ile yönetilmektedir.  
 
 ---
 
@@ -16,6 +16,8 @@ Bu proje, **Spring Boot** ve **Spring Data JPA** kullanılarak geliştirilmiş b
   - Öğrenci silme (**Delete**)  
   - Öğrenci listesini getirme (**Get All**)  
   - Öğrenci bilgilerini güncelleme (**Update**)  
+- **DTO katmanı** ile request/response yönetimi  
+- **Global Exception Handling** ile doğrulama hatalarının Postman’de kullanıcıya detaylı mesaj olarak gösterilmesi  
 
 ---
 
@@ -26,4 +28,4 @@ Bu proje, **Spring Boot** ve **Spring Data JPA** kullanılarak geliştirilmiş b
 - Spring Data JPA  
 - Lombok  
 - Maven  
-- H2 / PostgreSQL / MySQL (konfigüre edilebilir)
+- H2 / PostgreSQL / MySQL (konfigüre edilebilir)  

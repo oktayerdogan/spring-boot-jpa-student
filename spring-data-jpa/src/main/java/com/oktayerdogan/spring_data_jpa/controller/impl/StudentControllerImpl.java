@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.oktayerdogan.spring_data_jpa.controller.IStudentController;
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudent;
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudentIU;
-import com.oktayerdogan.spring_data_jpa.entites.Student;
 import com.oktayerdogan.spring_data_jpa.services.IStudentServices;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/rest/api/student")
@@ -27,7 +28,7 @@ public class StudentControllerImpl implements IStudentController {
 
     @PostMapping(path = "/save")
     @Override
-    public DtoStudent saveStudent(@RequestBody DtoStudentIU dtoStudentIU) {
+    public DtoStudent saveStudent(@RequestBody @Valid DtoStudentIU dtoStudentIU) {
        return studentService.saveStudent(dtoStudentIU);
     }
     

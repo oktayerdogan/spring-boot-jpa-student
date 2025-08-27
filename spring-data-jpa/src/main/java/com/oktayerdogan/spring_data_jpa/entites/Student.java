@@ -4,7 +4,6 @@ import java.sql.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,4 +36,12 @@ public class Student {
     @Column(name = "birth_of_date",nullable = true)
     private Date birthOfDate;
 
+    @Column(name = "email",nullable = false)
+    private String email;
+ 
+    @Column(name = "gobek",nullable = false,columnDefinition = "varchar(255) default 'BELİRTİLMEDİ'")
+    private String gobek;
+
+    @Column(name = "tckn",nullable = false,columnDefinition = "varchar(255) default 'tckgirmengerek'")
+    private String tckn;
 }

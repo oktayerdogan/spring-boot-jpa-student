@@ -1,6 +1,5 @@
 package com.oktayerdogan.spring_data_jpa.services.impl;
 
-import java.lang.annotation.Retention;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,6 @@ import com.oktayerdogan.spring_data_jpa.entites.Student;
 import com.oktayerdogan.spring_data_jpa.repository.StudentRepository;
 import com.oktayerdogan.spring_data_jpa.services.IStudentServices;
 
-import ch.qos.logback.core.joran.util.beans.BeanUtil;
 
 @Service
 public class StudentServicesImpl implements IStudentServices {
@@ -77,6 +75,8 @@ public class StudentServicesImpl implements IStudentServices {
             dbStudent.setFirstName(dtoStudentIU.getFirstName());
             dbStudent.setLastName(dtoStudentIU.getLastName());
             dbStudent.setBirthOfDate(dtoStudentIU.getBirthOfDate());
+            dbStudent.setEmail(dtoStudentIU.getEmail());
+            dbStudent.setGobek(dtoStudentIU.getGobek());
 
             Student updatedStudent = studentRepository.save(dbStudent);
             BeanUtils.copyProperties(updatedStudent,dto);
