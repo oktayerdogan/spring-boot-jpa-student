@@ -8,8 +8,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.oktayerdogan.spring_data_jpa.dto.DtoCourse;
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudent;
 import com.oktayerdogan.spring_data_jpa.dto.DtoStudentIU;
+import com.oktayerdogan.spring_data_jpa.entites.Course;
 import com.oktayerdogan.spring_data_jpa.entites.Student;
 import com.oktayerdogan.spring_data_jpa.repository.StudentRepository;
 import com.oktayerdogan.spring_data_jpa.services.IStudentServices;
@@ -47,14 +49,23 @@ public class StudentServicesImpl implements IStudentServices {
 
    @Override
    public DtoStudent getStudentById(Integer id) {
-    DtoStudent dto = new DtoStudent();
-    Optional<Student> optional = studentRepository.findStudentById(id);
-    
-    if(optional.isPresent()){
+        DtoStudent dtoStudent = new DtoStudent();
+        Optional<Student> optional = studentRepository.findById(id);
+        if(optional.isEmpty()){
+            return null;
+        }
         Student dbStudent = optional.get();
-        BeanUtils.copyProperties(dbStudent,dto);
-    }
-    return dto;
+        BeanUtils.copyProperties(dbStudent,dtoStudent);
+
+        if(dbStudent.getCourses()!=null && !dbStudent.getCourses().isEmpty()){
+            for (Course course : dbStudent.getCourses()) {
+                DtoCourse dtoCourse = new DtoCourse();
+                BeanUtils.copyProperties(course,dtoCourse);
+
+                dtoStudent.getCourses().add(dtoCourse);
+            }
+        }
+        return dtoStudent;
    }
 
    @Override
